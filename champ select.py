@@ -11,25 +11,25 @@ time.sleep(2)
 
 def imToString():
     # Path of tesseract executable
-    pytesseract.pytesseract.tesseract_cmd = r'/usr/local/bin/tesseract'
-    image1 = ImageGrab.grab(bbox=(160, 200, 2724, 1600))
+    pytesseract.pytesseract.tesseract_cmd = r'C:\Users\jamo0\AppData\Local\Programs\Python\Python39\Scripts\pytesseract.exe'
+    image1 = ImageGrab.grab
     string = pytesseract.image_to_string(cv2.cvtColor(nm.array(image1), cv2.COLOR_BGR2GRAY), lang='eng')
     return string
 
 
 # Choose pick/ban
-playing = str(input("Who would you like to play?\n"))
-banning = str(input("Who would you like to ban?\n"))
+playing = "Miss Fortune" #str(input("Who would you like to play?\n"))
+banning = "Morgana" #str(input("Who would you like to ban?\n"))
 time.sleep(2)
 
 # Will differ depending on resolution. This works for my Mac that has a 2880x1800 Display.
 # Also, you obviously have to keep the window in the same place every time
-searchx = 900
-searchy = 200
-characterx = 475
-charactery = 250
-lockinx = 720
-lockiny = 700
+searchx = 1150
+searchy = 340
+characterx = 700
+charactery = 375
+lockinx = 950
+lockiny = 830
 
 
 def lockin():
