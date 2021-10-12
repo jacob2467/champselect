@@ -11,7 +11,7 @@ pyautogui.FAILSAFE = True
 def imToString():
     # Path of tesseract executable
     pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
-    image1 = ImageGrab.grab(bbox=(320,180,1600,825))
+    image1 = ImageGrab.grab(bbox=(320, 180, 1600, 825))
     string = pytesseract.image_to_string(cv2.cvtColor(nm.array(image1), cv2.COLOR_BGR2GRAY), lang='eng')
     print(string)
     return string
@@ -28,7 +28,13 @@ characterx = 700
 charactery = 325
 lockinx = 950
 lockiny = 775
+acceptx = 925
+accepty = 700
 
+def acceptmatch():
+    pyautogui.moveTo(925, 700, duration=0.1)
+    pyautogui.click()
+    pyautogui.click()
 
 def lockin():
     pyautogui.moveTo(lockinx, lockiny, duration=0.1)
@@ -70,9 +76,29 @@ declare = "declare"
 ban = "ban"
 choose = "choose"
 loadout = "loadout"
+decline = "decline"
 
 hasdeclared = False
 hasbanned = False
+hasaccepted = False
+
+
+while hasaccepted == False:
+    imToString()
+    string = imToString()
+    time.sleep(3)
+    if decline in string.lower():
+        acceptmatch()
+        hasaccepted = True
+    elif declare in string.lower():
+        searchplay()
+        hasaccepted = True
+        hasdeclared = True
+    elif choose in string.lower():
+        searchplay()
+        exit()
+
+
 while hasdeclared == False:
     imToString()
     string = imToString()
@@ -85,14 +111,18 @@ while hasdeclared == False:
         exit()
     else:
         imToString()
+
+
 while hasdeclared == True:
+    time.sleep(1)
     while hasbanned == False:
         imToString()
         string = imToString()
         if ban in string.lower():
             searchban()
             hasbanned = True
-        elif choose in string.lower():
+    while hasbanned == True:
+        if choose in string.lower():
             searchplay()
             exit()
         elif loadout in string.lower():
