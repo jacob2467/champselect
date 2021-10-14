@@ -4,13 +4,44 @@ from PIL import ImageGrab
 import cv2
 import numpy as nm
 import pytesseract
+import configparser
+
+config = configparser.ConfigParser()
+config
+config.read("config.ini")
+
+
+def ConfigSectionMap(section):
+    dict1 = {}
+    options = config.options(section)
+    for option in options:
+        try:
+            dict1[option] = config.get(section, option)
+            if dict1[option] == -1:
+                DebugPrint("skip: %s" % option)
+        except:
+            print("exception on %s!" % option)
+            dict1[option] = None
+    return dict1
+
+
+searchx = int(ConfigSectionMap("SearchBar")['searchx'])
+searchy = int(ConfigSectionMap("SearchBar")['searchy'])
+characterx = int(ConfigSectionMap("ChooseCharacter")['characterx'])
+charactery = int(ConfigSectionMap("ChooseCharacter")['charactery'])
+lockinx = int(ConfigSectionMap("LockInCharacter")['lockinx'])
+lockiny = int(ConfigSectionMap("LockInCharacter")['lockiny'])
+acceptx = int(ConfigSectionMap("AcceptMatch")['acceptx'])
+accepty = int(ConfigSectionMap("AcceptMatch")['accepty'])
+ocr = (ConfigSectionMap("PyTesseract")['ocr'])
+
 
 pyautogui.FAILSAFE = True
 
 
 def imgToString():
     # Path of tesseract executable
-    pytesseract.pytesseract.tesseract_cmd = r'Tesseract-OCR\tesseract'
+    pytesseract.pytesseract.tesseract_cmd = str(ocr)
     image1 = ImageGrab.grab(bbox=(320, 180, 1600, 825))
     global string
     string = pytesseract.image_to_string(cv2.cvtColor(nm.array(image1), cv2.COLOR_BGR2GRAY), lang='eng')
@@ -19,16 +50,6 @@ def imgToString():
 # Choose pick/ban
 playing = str(input("Who would you like to play?\n"))
 banning = str(input("Who would you like to ban?\n"))
-
-# Will differ depending on resolution. Also, you obviously have to keep the window in the same place every time
-searchx = 1150
-searchy = 265
-characterx = 700
-charactery = 325
-lockinx = 950
-lockiny = 770
-acceptx = 925
-accepty = 700
 
 
 def acceptMatch():
