@@ -10,7 +10,7 @@ pyautogui.FAILSAFE = True
 
 def imgToString():
     # Path of tesseract executable
-    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
+    pytesseract.pytesseract.tesseract_cmd = r'Tesseract-OCR\tesseract'
     image1 = ImageGrab.grab(bbox=(320, 180, 1600, 825))
     global string
     string = pytesseract.image_to_string(cv2.cvtColor(nm.array(image1), cv2.COLOR_BGR2GRAY), lang='eng')
