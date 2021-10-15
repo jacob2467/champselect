@@ -53,7 +53,7 @@ banning = str(input("Who would you like to ban?\n"))
 
 
 def acceptMatch():
-    pyautogui.moveTo(925, 700, duration=0.5)
+    pyautogui.moveTo(acceptx, accepty, duration=0.5)
     pyautogui.click()
     pyautogui.click()
 
@@ -120,7 +120,7 @@ while hasDeclared == False:
     if "declare" in string.lower():
         searchPlay()
         hasDeclared = True
-    elif "choose" in string.lower():
+    elif "character" in string.lower():
         searchPlay()
         exit()
     else:
@@ -139,6 +139,6 @@ while hasDeclared == True:
         imgToString()
         print(string)
         if "choose" in string.lower():
-            searchPlay()
+            lockin()
             print("Done!")
             exit()
