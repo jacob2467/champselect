@@ -33,7 +33,10 @@ lockinx = int(ConfigSectionMap("LockInCharacter")['lockinx'])
 lockiny = int(ConfigSectionMap("LockInCharacter")['lockiny'])
 acceptx = int(ConfigSectionMap("AcceptMatch")['acceptx'])
 accepty = int(ConfigSectionMap("AcceptMatch")['accepty'])
-ocr = (ConfigSectionMap("PyTesseract")['ocr'])
+windowSizeA = int(ConfigSectionMap("WindowSize")['a'])
+windowSizeB = int(ConfigSectionMap("WindowSize")['b'])
+windowSizeC = int(ConfigSectionMap("WindowSize")['c'])
+windowSizeD = int(ConfigSectionMap("WindowSize")['d'])
 
 
 pyautogui.FAILSAFE = True
@@ -41,8 +44,8 @@ pyautogui.FAILSAFE = True
 
 def imgToString():
     # Path of tesseract executable
-    pytesseract.pytesseract.tesseract_cmd = str(ocr)
-    image1 = ImageGrab.grab(bbox=(320, 180, 1600, 825))
+    pytesseract.pytesseract.tesseract_cmd = str('Tesseract-OCR/tesseract')
+    image1 = ImageGrab.grab(bbox=(windowSizeA, windowSizeB, windowSizeC, windowSizeD))
     global string
     string = pytesseract.image_to_string(cv2.cvtColor(nm.array(image1), cv2.COLOR_BGR2GRAY), lang='eng')
 
@@ -69,7 +72,6 @@ def character():
     pyautogui.click()
     pyautogui.click()
     time.sleep(0.1)
-    lockin()
 
 
 def searchPlay():
@@ -92,26 +94,28 @@ def searchBan():
     pyautogui.typewrite(banning)
     pyautogui.press('enter')
     character()
+    pyautogui.click()
 
 
 hasDeclared = False
 hasBanned = False
 hasAccepted = False
+inGame = False
 
 while hasAccepted == False:
     imgToString()
     print(string)
+    inGame = False
     time.sleep(1)
     if "decline" in string.lower():
         acceptMatch()
-        hasAccepted = True
-    elif "declare" in string.lower():
-        searchPlay()
-        hasAccepted = True
-        hasDeclared = True
-    elif "choose" in string.lower():
-        searchPlay()
-        exit()
+        while inGame == False:
+            if "declar" in string.lower():
+                hasAccepted = True
+                inGame = True
+            else:
+                inGame = True
+
 
 while hasDeclared == False:
     imgToString()
@@ -119,9 +123,11 @@ while hasDeclared == False:
     time.sleep(1)
     if "declare" in string.lower():
         searchPlay()
+        pyautogui.click()
         hasDeclared = True
     elif "character" in string.lower():
         searchPlay()
+        pyautogui.click()
         exit()
     else:
         imgToString()
