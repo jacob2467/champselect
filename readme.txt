@@ -1,6 +1,15 @@
-This program will accept a match, declare your character, ban your character, and then lock in your character. At the moment, it doesn't work if your character gets banned, or your teammate wants to play the character you want to ban, or if someone declines the ready check. You also have to have league set to the resolution it's at by default, and it has to be on your primary monitor if you have more than one. You also can't move it around much. I might fix some of these issues at some point, but this project was mostly for fun and I doubt anyone will actually use it so I'm not sure.
+This program will accept a match, declare your character, ban your character, 
+and then lock in your character. At the moment, it doesn't work if your character
+gets banned, or your teammate wants to play the character you want to ban, or if
+someone declines the ready check. You also have to have league set to the
+resolution it's at by default, and it has to be on your primary monitor if you
+have more than one. You also can't move it around much. I might fix some of
+these issues at some point, but this project was mostly for fun and I doubt
+anyone will actually use it so I'm not sure.
 
-The values in the config.ini file should work for 1080p. Below are the values for a few other resolutions that I've tested, including 1080p in case you want to change it back:
+The values in the config.ini file should work for 1080p. Below are the values
+for a few other resolutions that I've tested, including 1080p in case you want
+to change it back:
 
 1920 x 1080:
 searchx = 1150
@@ -32,6 +41,7 @@ windowsize2 = 200
 windowsize3 = 2724
 windowsize4 = 1600
 
-
-
-
+Finally, if you downloaded the source code and not the release, the script
+won't work without libtesseract-5.dll, which was too large of a file to upload
+to GitHub. I've included a compressed version in /Tesseract-OCR, which is also
+where the extracted .dll should go.
