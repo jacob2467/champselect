@@ -105,12 +105,11 @@ inGame = False
 while hasAccepted == False:
     imgToString()
     print(string)
-    inGame = False
     time.sleep(1)
     if "decline" in string.lower():
         acceptMatch()
         while inGame == False:
-            if "declar" in string.lower():
+            if "declare" in string.lower():
                 hasAccepted = True
                 inGame = True
             else:
