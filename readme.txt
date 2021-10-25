@@ -26,6 +26,19 @@ windowsize3 = 1600
 windowsize4 = 825
 
 2560 x 1440:
+searchx = 1450
+searchy = 375
+characterx = 950
+charactery = 450
+lockinx = 1250
+lockiny = 1000
+acceptx = 1250
+accepty = 900
+# Window size is currently set to capture the entire screen because I haven't tested it for 1440p yet.
+windowsize1 = 0
+windowsize2 = 0
+windowsize3 = 2560
+windowsize4 = 1440
 
 2880 x 1800:
 searchx = 900
