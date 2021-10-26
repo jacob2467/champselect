@@ -49,7 +49,6 @@ def imgToString():
     global string
     string = pytesseract.image_to_string(cv2.cvtColor(nm.array(image1), cv2.COLOR_BGR2GRAY), lang='eng')
 
-
 # Choose pick/ban
 playing = str(input("Who would you like to play?\n"))
 banning = str(input("Who would you like to ban?\n"))
@@ -95,6 +94,7 @@ def searchBan():
     pyautogui.press('enter')
     character()
     pyautogui.click()
+    lockin()
 
 
 hasDeclared = False
