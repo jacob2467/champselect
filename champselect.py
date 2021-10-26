@@ -100,7 +100,6 @@ def searchBan():
 hasDeclared = False
 hasBanned = False
 hasAccepted = False
-inGame = False
 
 while hasAccepted == False:
     imgToString()
@@ -108,12 +107,8 @@ while hasAccepted == False:
     time.sleep(1)
     if "decline" in string.lower():
         acceptMatch()
-        while inGame == False:
-            if "declare" in string.lower():
-                hasAccepted = True
-                inGame = True
-            else:
-                inGame = True
+        if "declare" in string.lower():
+            hasAccepted = True
 
 
 while hasDeclared == False:
