@@ -45,7 +45,8 @@ pyautogui.FAILSAFE = True
 def imgToString():
     # Path of tesseract executable
     pytesseract.pytesseract.tesseract_cmd = str(ocr)
-    image1 = ImageGrab.grab(bbox=(windowSize1, windowSize2, windowSize3, windowSize4))
+    image1 = ImageGrab.grab(bbox = (windowSize1, windowSize2, windowSize3, windowSize4))
+    # image1.show()
     global string
     string = pytesseract.image_to_string(cv2.cvtColor(nm.array(image1), cv2.COLOR_BGR2GRAY), lang='eng')
 
@@ -107,7 +108,8 @@ while hasAccepted == False:
     time.sleep(1)
     if "decline" in string.lower():
         acceptMatch()
-        if "declare" in string.lower():
+        if "assign" in string.lower():
+            pyautogui.moveTo(0,0,duration=0.5)
             hasAccepted = True
 
 
