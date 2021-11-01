@@ -108,8 +108,8 @@ while hasAccepted == False:
     time.sleep(1)
     if "decline" in string.lower():
         acceptMatch()
-        if "assign" in string.lower():
-            pyautogui.moveTo(0,0,duration=0.5)
+        if "declare" in string.lower():
+            pyautogui.moveTo(0, 0, duration=0.5)
             hasAccepted = True
 
 
