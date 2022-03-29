@@ -47,20 +47,20 @@ windowsize4 = 825
 2560 x 1440:
 
 [SearchBar]
-searchx = 1450
-searchy = 375
+searchx = 1150
+searchy = 265
 
 [ChooseCharacter]
-characterx = 950
-charactery = 450
+characterx = 700
+charactery = 325
 
 [LockInCharacter]
-lockinx = 1250
-lockiny = 1000
+lockinx = 950
+lockiny = 770
 
 [AcceptMatch]
-acceptx = 1250
-accepty = 900
+acceptx = 925
+accepty = 700
 
 
 # These values change the dimensions of the screenshot.
@@ -70,11 +70,10 @@ accepty = 900
 # Y of bottom right
 
 [WindowSize]
-# Window size is currently set to capture the entire screen because I haven't tested it for 1440p yet.
-windowsize1 = 0
-windowsize2 = 0
-windowsize3 = 2560
-windowsize4 = 1440
+windowsize1 = 320
+windowsize2 = 180 
+windowsize3 = 1600
+windowsize4 = 825
 
 -----------------------------------------------------------------------
 2880 x 1800
